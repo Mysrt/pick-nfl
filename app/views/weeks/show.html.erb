@@ -1,0 +1,24 @@
+<% title "Week" %>
+
+<p>
+  <strong>Number:</strong>
+  <%= @week.number %>
+</p>
+<p>
+  <strong>Title:</strong>
+  <%= @week.title %>
+</p>
+<p>
+  <strong>Home Team:</strong>
+  <%= @week.home_team_id %>
+</p>
+<p>
+  <strong>Away Team:</strong>
+  <%= @week.away_team_id %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_week_path(@week) %> |
+  <%= link_to "Destroy", @week, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", weeks_path %>
+</p>

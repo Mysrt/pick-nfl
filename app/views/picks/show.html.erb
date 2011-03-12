@@ -1,0 +1,28 @@
+<% title "Pick" %>
+
+<p>
+  <strong>Type:</strong>
+  <%= @pick.type %>
+</p>
+<p>
+  <strong>Spread:</strong>
+  <%= @pick.spread %>
+</p>
+<p>
+  <strong>Game:</strong>
+  <%= @pick.game_id %>
+</p>
+<p>
+  <strong>User:</strong>
+  <%= @pick.user_id %>
+</p>
+<p>
+  <strong>Team:</strong>
+  <%= @pick.team_id %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_pick_path(@pick) %> |
+  <%= link_to "Destroy", @pick, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", picks_path %>
+</p>

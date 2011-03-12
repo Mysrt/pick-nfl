@@ -1,7 +1,8 @@
 class CreateLeagues < ActiveRecord::Migration
   def self.up
     create_table :leagues do |t|
-
+      t.string :name
+      t.string :type
       t.timestamps
     end
   end

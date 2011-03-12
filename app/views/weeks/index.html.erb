@@ -1,0 +1,23 @@
+<% title "Weeks" %>
+
+<table>
+  <tr>
+    <th>Number</th>
+    <th>Title</th>
+    <th>Home Team</th>
+    <th>Away Team</th>
+  </tr>
+  <% for week in @weeks %>
+    <tr>
+      <td><%= week.number %></td>
+      <td><%= week.title %></td>
+      <td><%= week.home_team_id %></td>
+      <td><%= week.away_team_id %></td>
+      <td><%= link_to "Show", week %></td>
+      <td><%= link_to "Edit", edit_week_path(week) %></td>
+      <td><%= link_to "Destroy", week, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Week", new_week_path %></p>

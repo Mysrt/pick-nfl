@@ -1,4 +1,17 @@
 PickNfl::Application.routes.draw do
+  resources :seasons
+
+  resources :picks
+
+  resources :teams
+
+  resources :weeks
+
+  resources :games
+
+  resources :leagues
+  root :to => 'leagues#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
