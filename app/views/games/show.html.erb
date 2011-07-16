@@ -6,6 +6,16 @@
 </p>
 
 <p>
+  <strong>Home Team:</strong>
+  <%= @game.home_team.try(:name) %>
+</p>
+
+<p>
+  <strong>Away Team:</strong>
+  <%= @game.away_team.try(:name) %>
+</p>
+
+<p>
   <%= link_to "Edit", edit_game_path(@game) %> |
   <%= link_to "Destroy", @game, :confirm => 'Are you sure?', :method => :delete %> |
   <%= link_to "View All", games_path %>

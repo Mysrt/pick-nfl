@@ -4,5 +4,15 @@
     <%= f.label :score %><br />
     <%= f.text_field :score %>
   </p>
+  <p>
+    <%= f.label :home_team_id %><br />
+    <%= f.select :home_team_id, FootballTeam.teams_hash %>
+  </p>
+  <p>
+    <%= f.label :away_team_id %><br />
+    <%= f.select :away_team_id, FootballTeam.teams_hash %>
+  </p>
+<%= FootballTeam.teams_hash.inspect %>
   <p><%= f.submit %></p>
+
 <% end %>

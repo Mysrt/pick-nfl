@@ -1,0 +1,3 @@
+class FootballTeam < Team
+
+end
