@@ -25,6 +25,8 @@ class GamesController < ApplicationController
   end
 
   def update
+    puts "*********************************"
+    puts params
     @game = Game.find(params[:id])
     if @game.update_attributes(params[:game])
       redirect_to @game, :notice  => "Successfully updated game."

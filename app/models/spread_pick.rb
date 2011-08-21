@@ -1,0 +1,3 @@
+class SpreadPick < Pick
+
+end

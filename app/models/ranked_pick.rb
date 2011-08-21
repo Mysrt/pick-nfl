@@ -1,0 +1,3 @@
+class RankedPick < Pick
+
+end

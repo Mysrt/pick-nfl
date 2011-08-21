@@ -5,6 +5,7 @@ class WeeksController < ApplicationController
 
   def show
     @week = Week.find(params[:id])
+    @games = @week.games
   end
 
   def new
@@ -38,4 +39,8 @@ class WeeksController < ApplicationController
     @week.destroy
     redirect_to weeks_url, :notice => "Successfully destroyed week."
   end
+
+  def save_pick
+  end
+
 end
