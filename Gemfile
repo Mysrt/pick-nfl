@@ -9,12 +9,8 @@ gem 'sqlite3'
 gem 'devise'
 gem "nifty-generators", :group => :development
 
-group :production do
-  gem 'pg'
-end
-group :development, :test do
-  gem 'sqlite3'
-end
+  gem 'pg', :group => [:production]
+  gem 'sqlite3', :group => [:development, :test]
 
 # Use unicorn as the web server
 # gem 'unicorn'
