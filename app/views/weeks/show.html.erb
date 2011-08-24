@@ -12,14 +12,14 @@
 
 <% @games.each do |game| %>
   <%= form_for game do |f| -%> 
-   <%= f.fields_for :ranked_picks, RankedPick.new do |pick_fields| %>
+   <%= f.fields_for :ranked_picks, game.ranked_picks.first || RankedPick.new do |pick_fields| %>
       <%= pick_fields.select :spread, ( 1..16 ).to_a %>
       Winner: <%= pick_fields.collection_select :team_id, [ game.home_team , game.away_team ], :id, :name %>
     <% end -%>
       <%= game.home_team.name %> vs. <%= game.away_team.name %>
       |  Spread <%= game.spread %> Points
 
-   <%= f.fields_for :spread_picks, SpreadPick.new do |spread_fields| %>
+   <%= f.fields_for :spread_picks, game.spread_picks.first || SpreadPick.new do |spread_fields| %>
       Winner: <%= spread_fields.collection_select :team_id, [ game.home_team , game.away_team ], :id, :name %>
    <% end -%>
 
