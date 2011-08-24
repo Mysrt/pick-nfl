@@ -27,6 +27,7 @@ class WeeksController < ApplicationController
 
   def update
     @week = Week.find(params[:id])
+    assign_user_id_to_params(params[:week])
     if @week.update_attributes(params[:week])
       redirect_to @week, :notice  => "Successfully updated week."
     else
@@ -40,7 +41,11 @@ class WeeksController < ApplicationController
     redirect_to weeks_url, :notice => "Successfully destroyed week."
   end
 
-  def save_pick
+  def assign_user_id_to_params(params)
+    params[:games_attributes].each do |id, game|
+      game[:ranked_picks_attributes].each {|id, pick| pick.merge!(:user_id => current_user.id)}
+      game[:spread_picks_attributes].each {|id, pick| pick.merge!(:user_id => current_user.id)}
+    end
   end
 
 end

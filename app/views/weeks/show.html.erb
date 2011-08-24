@@ -9,24 +9,23 @@
   <%= @week.title %>
 </p>
 
+<%= current_user.id %>
+<%= form_for @week do |w| %>
+  <% @week.games.each do |game| %>
+    <%= w.fields_for :games, game do |f| -%> 
 
-<% @games.each do |game| %>
-  <%= form_for game do |f| -%> 
-   <%= f.fields_for :ranked_picks, game.ranked_picks.first || RankedPick.new do |pick_fields| %>
-      <%= pick_fields.select :spread, ( 1..16 ).to_a %>
-      Winner: <%= pick_fields.collection_select :team_id, [ game.home_team , game.away_team ], :id, :name %>
+     <%= f.fields_for :ranked_picks, current_user.ranked_picks.find_by_game_id(game.id) || RankedPick.new(:user_id => current_user.id) do |pick_fields| %>
+        <%= pick_fields.select :spread, ( 1..16 ).to_a %>
+        Winner: <%= pick_fields.collection_select :team_id, [ game.home_team , game.away_team ], :id, :name %>
+     <% end -%>
+        <%= game.home_team.name %> vs. <%= game.away_team.name %> |  Spread <%= game.spread %> Points
+
+     <%= f.fields_for :spread_picks, current_user.spread_picks.find_by_game_id(game.id) || SpreadPick.new(:user_id => current_user.id) do |spread_fields| %>
+        Winner: <%= spread_fields.collection_select :team_id, [ game.home_team , game.away_team ], :id, :name %>
+     <% end -%><br />
     <% end -%>
-      <%= game.home_team.name %> vs. <%= game.away_team.name %>
-      |  Spread <%= game.spread %> Points
 
-   <%= f.fields_for :spread_picks, game.spread_picks.first || SpreadPick.new do |spread_fields| %>
-      Winner: <%= spread_fields.collection_select :team_id, [ game.home_team , game.away_team ], :id, :name %>
-   <% end -%>
-
-
-
-
-    <br />
-    <%= f.submit %>
   <% end -%>
+
+  <%= w.submit %>
 <% end -%>

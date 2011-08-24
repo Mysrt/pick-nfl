@@ -9,7 +9,7 @@
   </tr>
   <% @games.each do |game|%>
     <tr>
-      <td><%= game.winner.name %></td>
+      <td><%= game.winner.try(:name) %></td>
       <td><%= game.home_team_score || 0 %> - <%= game.away_team_score || 0 %></td>
       <td><%= game.home_team.try(:name) %></td>
       <td><%= game.away_team.try(:name) %></td>
