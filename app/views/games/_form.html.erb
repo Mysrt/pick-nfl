@@ -15,13 +15,12 @@
   </p>
   <p>
     <%= f.label :home_team_id %><br />
-    <%= f.select :home_team_id, FootballTeam.teams_hash %>
+    <%= f.collection_select :home_team_id, Team.all, :id, :name, :prompt => 'Select a team'%>
   </p>
   <p>
     <%= f.label :away_team_id %><br />
-    <%= f.select :away_team_id, FootballTeam.teams_hash %>
+    <%= f.collection_select :away_team_id, Team.all, :id, :name, :prompt => 'Select a team' %>
   </p>
-<%= FootballTeam.teams_hash.inspect %>
   <p><%= f.submit %></p>
 
 <% end %>

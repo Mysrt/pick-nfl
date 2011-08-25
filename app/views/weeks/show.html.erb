@@ -9,7 +9,6 @@
   <%= @week.title %>
 </p>
 
-<%= current_user.id %>
 <%= form_for @week do |w| %>
   <% @week.games.each do |game| %>
     <%= w.fields_for :games, game do |f| -%> 

@@ -3,12 +3,10 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Type</th>
   </tr>
   <% for team in @teams %>
     <tr>
       <td><%= team.name %></td>
-      <td><%= team.type %></td>
       <td><%= link_to "Show", team %></td>
       <td><%= link_to "Edit", edit_team_path(team) %></td>
       <td><%= link_to "Destroy", team, :confirm => 'Are you sure?', :method => :delete %></td>
